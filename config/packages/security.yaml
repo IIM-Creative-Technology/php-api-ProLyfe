@@ -37,4 +37,9 @@ security:
         - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY } # Allows accessing the Swagger UI
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/notes, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/matieres, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/intervenants, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/eleves, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/classes, roles: IS_AUTHENTICATED_FULLY }
+
       

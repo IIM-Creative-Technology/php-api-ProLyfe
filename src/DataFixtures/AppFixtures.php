@@ -92,13 +92,24 @@ class AppFixtures extends Fixture
         $manager->flush();
 
 
-        for($i = 0; $i <= 3; $i++) {
+        $admins = ['Karine', 'Nicolas', 'Alexis'];
+
+        foreach($admins as $admin) {
             $user = new User;
-            $user->setEmail('iim' . $i . 'admin.devinci.fr');
+            $user->setEmail($admin. $i . 'admin.devinci.fr');
             $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
 
             $manager->persist($user);
-        }
+          }
+
+
+        // for($i = 0; $i <= $admins; $i++) {
+        //     $user = new User;
+        //     $user->setEmail('iim' . $i . 'admin.devinci.fr');
+        //     $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
+
+        //     $manager->persist($user);
+        // }
         $manager->flush();
 
     }
