@@ -3,7 +3,9 @@ php-api-ProLyfe created by GitHub Classroom
 
 # IIM API DOCUMENTATION
 
+### Installation :
 
+composer install
 
 ### Générer un token JWT :
 
