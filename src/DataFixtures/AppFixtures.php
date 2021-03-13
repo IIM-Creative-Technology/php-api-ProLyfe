@@ -6,14 +6,23 @@ use App\Entity\Classe;
 use App\Entity\Etudiant;
 use App\Entity\Intervenant;
 use App\Entity\Note;
+use App\Repository\ClasseRepository;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 
 
 class AppFixtures extends Fixture
 {
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+        $this->classeRepository = $this->entityManager->getRepository(Classe::class);
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create();
@@ -42,7 +51,7 @@ class AppFixtures extends Fixture
             $etudiant->setNom($faker->lastName);
             $etudiant->setPrenom($faker->firstNameMale);
             $etudiant->setAge(rand(16, 30));
-            $etudiant->setAnnee(2000);
+            $etudiant->setAnnee(rand(2018, 2023));
             $etudiant->setPromotion($classeKey[rand(1, 4)]);
             $manager->persist($etudiant);
         }
