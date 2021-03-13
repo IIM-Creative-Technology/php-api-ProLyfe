@@ -12,11 +12,11 @@ POST : /api/login
 
 ### Les différents endpoints :
 
-* Notes /api/notes
-* Matières /api/matieres
-* Intervenants /api/intervenants
-* Elèves /api/eleves
-* Classes /api/classes
+* Notes : /api/notes
+* Matières : /api/matieres
+* Intervenants : /api/intervenants
+* Elèves : /api/eleves
+* Classes : /api/classes
 
 ### Mails des personnes pouvant s'authentifier :
 
