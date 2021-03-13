@@ -7,19 +7,24 @@ use App\Entity\Etudiant;
 use App\Entity\Intervenant;
 use App\Entity\Matiere;
 use App\Entity\Note;
+use App\Entity\User;
 use App\Repository\ClasseRepository;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
-
-
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AppFixtures extends Fixture
 {
+    /**
+     * @var UserPasswordEncoderInterface
+    */
+    private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
     {
+        $this->passwordEncoder = $passwordEncoder;
         $this->entityManager = $entityManager;
         $this->classeRepository = $this->entityManager->getRepository(Classe::class);
         $this->intervenantRepository = $this->entityManager->getRepository(Intervenant::class);
@@ -83,6 +88,16 @@ class AppFixtures extends Fixture
             $note->setMatiere($matiereKey[$i]);
             $note->setNote(rand(0, 20));
             $manager->persist($note);
+        }
+        $manager->flush();
+
+
+        for($i = 0; $i <= 3; $i++) {
+            $user = new User;
+            $user->setEmail('iim' . $i . 'admin.devinci.fr');
+            $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
+
+            $manager->persist($user);
         }
         $manager->flush();
 
