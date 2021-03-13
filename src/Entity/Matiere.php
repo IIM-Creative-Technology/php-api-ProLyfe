@@ -25,9 +25,16 @@ class Matiere
     private $nom;
 
     /**
-     * @ORM\Column(type="dateinterval")
+     * @ORM\Column(type="date")
      */
-    private $dateStartToEnd;
+    private $dateStart;
+
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateEnd;
+    
 
     /**
      * @ORM\OneToOne(targetEntity=Intervenant::class, cascade={"persist", "remove"})
@@ -58,18 +65,6 @@ class Matiere
         return $this;
     }
 
-    public function getDateStartToEnd(): ?\DateInterval
-    {
-        return $this->dateStartToEnd;
-    }
-
-    public function setDateStartToEnd(\DateInterval $dateStartToEnd): self
-    {
-        $this->dateStartToEnd = $dateStartToEnd;
-
-        return $this;
-    }
-
     public function getIntervenant(): ?Intervenant
     {
         return $this->intervenant;
@@ -90,6 +85,30 @@ class Matiere
     public function setPromotion(Classe $promotion): self
     {
         $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    public function getDateStart(): ?\DateTimeInterface
+    {
+        return $this->dateStart;
+    }
+
+    public function setDateStart(\DateTimeInterface $dateStart): self
+    {
+        $this->dateStart = $dateStart;
+
+        return $this;
+    }
+
+    public function getDateEnd(): ?\DateTimeInterface
+    {
+        return $this->dateEnd;
+    }
+
+    public function setDateEnd(\DateTimeInterface $dateEnd): self
+    {
+        $this->dateEnd = $dateEnd;
 
         return $this;
     }

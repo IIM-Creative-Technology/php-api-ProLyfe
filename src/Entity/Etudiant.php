@@ -35,7 +35,7 @@ class Etudiant
     private $age;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="integer")
      */
     private $annee;
 
@@ -88,12 +88,12 @@ class Etudiant
         return $this;
     }
 
-    public function getAnnee(): ?\DateTimeInterface
+    public function getAnnee(): ? int
     {
         return $this->annee;
     }
 
-    public function setAnnee(\DateTimeInterface $annee): self
+    public function setAnnee(int $annee): self
     {
         $this->annee = $annee;
 
