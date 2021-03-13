@@ -5,7 +5,9 @@ php-api-ProLyfe created by GitHub Classroom
 
 ### Installation :
 
+```
 composer install
+```
 
 ### Générer un token JWT :
 
