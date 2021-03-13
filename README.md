@@ -9,6 +9,26 @@ php-api-ProLyfe created by GitHub Classroom
 composer install
 ```
 
+### Créer la base de donnée :
+
+```
+php bin/console doctrine:database:create
+```
+
+### Migrer la base de donnée ;
+
+```
+php bin/console doctrine:migrations:migrate
+```
+
+### Peupler notre nos tables :
+
+Ajouter nos fixtures :
+
+```
+php bin/console doctrine:fixtures:load 
+```
+
 ### Générer un token JWT :
 
 POST : /api/login
